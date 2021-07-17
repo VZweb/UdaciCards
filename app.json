@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "UdaciCards",
+    "slug": "UdaciCards",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "UdaciCards"
+}
