@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: "center",
     justifyContent: "center",
-    paddingLeft: 60,
-    paddingRight: 60,
+    paddingLeft: 30,
+    paddingRight: 30,
     width: 250,
   },
 });
