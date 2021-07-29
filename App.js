@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import DeckList from "./components/DeckList";
 import DeckDetails from "./components/DeckDetails";
 import Quiz from "./components/Quiz";
@@ -68,38 +68,36 @@ function AddDeckStackScreen() {
   );
 }
 
-  export default function App() {
-    useEffect(() => {
-      setLocalNotification();
-    },[])
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
+export default function App() {
+  useEffect(() => {
+    setLocalNotification();
+  }, []);
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
-                if (route.name === "Home") {
-                  iconName = focused ? "home" : "home-outline";
-                } else if (route.name === "Add Deck") {
-                  iconName = focused
-                    ? "add-circle-sharp"
-                    : "add-circle-outline";
-                }
+              if (route.name === "Home") {
+                iconName = focused ? "home" : "home-outline";
+              } else if (route.name === "Add Deck") {
+                iconName = focused ? "add-circle-sharp" : "add-circle-outline";
+              }
 
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
-            tabBarOptions={{
-              activeTintColor: "#697b83",
-              inactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen name="Home" component={HomeStackScreen} />
-            <Tab.Screen name="Add Deck" component={AddDeckStackScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </Provider>
-    );
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "#697b83",
+            inactiveTintColor: "gray",
+          }}
+        >
+          <Tab.Screen name="Home" component={HomeStackScreen} />
+          <Tab.Screen name="Add Deck" component={AddDeckStackScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
+  );
 }

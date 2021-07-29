@@ -9,16 +9,26 @@ function DeckDetails(props) {
   const { navigate } = props.navigation;
   return (
     <View style={styles.container}>
-      <View style={styles.deck} >
+      <View style={styles.deck}>
         <View style={styles.deckTitleContainer}>
           <Text style={styles.deckTitleText}>{props.deck.title}</Text>
           <Text>{props.deck.questions.length} cards</Text>
         </View>
       </View>
-      <TextButton style={styles.addCardButton} onPress={() => navigate("AddCard", { title })}>
+      <TextButton
+        style={styles.addCardButton}
+        onPress={() => navigate("AddCard", { title })}
+      >
         Add Card
       </TextButton>
-      <TextButton style={styles.startOverButton} onPress={() => props.noOfQuestions > 0 ? navigate("Quiz", { title }) : Alert.alert("Warning", "Deck has no cards!")}>
+      <TextButton
+        style={styles.startOverButton}
+        onPress={() =>
+          props.noOfQuestions > 0
+            ? navigate("Quiz", { title })
+            : Alert.alert("Warning", "Deck has no cards!")
+        }
+      >
         Start Quiz
       </TextButton>
     </View>
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 60,
     paddingRight: 60,
-    width: 250
+    width: 250,
   },
 });
 
@@ -92,7 +102,7 @@ function mapStateToProps({ decks }, { route }) {
 
   return {
     deck,
-    noOfQuestions
+    noOfQuestions,
   };
 }
 

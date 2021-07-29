@@ -39,7 +39,7 @@ function Quiz(props) {
   const { question, answer } = props?.deck?.questions[currentCard];
 
   const { title } = props.deck;
-  const { navigate, reset } = props.navigation;
+  const { navigate } = props.navigation;
 
   const reverseCard = () => {
     if (value1 >= 90) {
@@ -70,7 +70,8 @@ function Quiz(props) {
 
   const setCardIncorrect = () => {
     currentCard === props.noOfQuestions - 1
-      ? (setQuizFinished(true), clearLocalNotification().then(setLocalNotification))
+      ? (setQuizFinished(true),
+        clearLocalNotification().then(setLocalNotification))
       : (setCurrentCard(currentCard + 1), showAnswer ? reverseCard() : "");
 
     setIncorrectAnswers(incorrectAnswers + 1);
