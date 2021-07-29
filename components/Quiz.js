@@ -70,7 +70,7 @@ function Quiz(props) {
 
   const setCardIncorrect = () => {
     currentCard === props.noOfQuestions - 1
-      ? setQuizFinished(true)
+      ? (setQuizFinished(true), clearLocalNotification().then(setLocalNotification))
       : (setCurrentCard(currentCard + 1), showAnswer ? reverseCard() : "");
 
     setIncorrectAnswers(incorrectAnswers + 1);

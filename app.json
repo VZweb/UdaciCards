@@ -1,11 +1,10 @@
 {
   "expo": {
-    "sdkVersion": "40.0.0",
     "name": "UdaciCards",
     "slug": "UdaciCards",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "icon": "https://www.kindpng.com/picc/m/560-5601766_blank-playing-card-png-clipart-blank-playing-cards.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

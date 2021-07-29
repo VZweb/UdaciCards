@@ -1,5 +1,4 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Permissions from "expo-permissions";
 import * as Notifications from "expo-notifications";
 import { Platform } from 'react-native';
 
@@ -7,7 +6,7 @@ const NOTIFICATION_KEY = "UdaciFitness:notifications";
 
 export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY).then(() => {
-    Platform.OS != "web" && Notifications.cancelAllScheduledNotificationsAsync;
+    Platform.OS != "web" && Notifications.cancelAllScheduledNotificationsAsync();
   });
 }
 
@@ -32,19 +31,27 @@ export function setLocalNotification() {
     .then(JSON.parse)
     .then((data) => {
       if (data === null) {
-        Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {
+        Notifications.getPermissionsAsync().then(({ status }) => {
           if (status === "granted" && Platform.OS != 'web') {
             Notifications.cancelAllScheduledNotificationsAsync();
 
-            let tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(20);
-            tomorrow.setMinutes(0);
+            Notifications.setNotificationHandler({
+                handleNotification: async () => ({
+                  shouldShowAlert: true,
+                  shouldPlaySound: false,
+                  shouldSetBadge: false,
+                }),
+              });
+
+            // let tomorrow = new Date();
+            // tomorrow.setDate(tomorrow.getDate() + 1);
+            // tomorrow.setHours(20);
+            // tomorrow.setMinutes(0);
 
             Notifications.scheduleNotificationAsync({
               content: createNotification(),
               trigger: {
-                hour: 0, minute: 34, repeats: true 
+                hour: 22, minute: 55, repeats: true 
               },
             });
 

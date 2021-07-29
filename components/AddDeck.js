@@ -8,8 +8,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { storeData } from "../utils/api";
 import { saveDeck } from "../actions/decks";
 import { connect } from "react-redux";
 import { Alert } from "react-native";
