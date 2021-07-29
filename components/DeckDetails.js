@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Platform, StatusBar, Text } from "react-native";
 import { connect } from "react-redux";
 import TextButton from "./TextButton";
+import { Alert } from "react-native";
 
 function DeckDetails(props) {
   const { title } = props.route.params;
@@ -14,16 +15,10 @@ function DeckDetails(props) {
           <Text>{props.deck.questions.length} cards</Text>
         </View>
       </View>
-      <TextButton
-        style={styles.addCardButton}
-        onPress={() => navigate("AddCard", { title })}
-      >
+      <TextButton style={styles.addCardButton} onPress={() => navigate("AddCard", { title })}>
         Add Card
       </TextButton>
-      <TextButton
-        style={styles.startOverButton}
-        onPress={() => navigate("Quiz", { title })}
-      >
+      <TextButton style={styles.startOverButton} onPress={() => props.noOfQuestions > 0 ? navigate("Quiz", { title }) : Alert.alert("Warning", "Deck has no cards!")}>
         Start Quiz
       </TextButton>
     </View>
@@ -93,9 +88,11 @@ const styles = StyleSheet.create({
 function mapStateToProps({ decks }, { route }) {
   const { title } = route.params;
   let deck = Object.values(decks).find((item) => item.title === title);
+  let noOfQuestions = deck.questions.length;
 
   return {
     deck,
+    noOfQuestions
   };
 }
 

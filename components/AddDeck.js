@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   addDeckText: {
-    flex: 0.16,
+    flex: 0.3,
     flexWrap: "wrap",
     fontSize: 20,
     fontWeight: "bold",
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     color: "#697b83",
   },
   inputTitle: {
-    marginTop: 10,
+    marginTop: 0.1,
     width: '80%',
     height: 50,
     fontSize: 18,

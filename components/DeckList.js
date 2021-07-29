@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   SafeAreaView,
-  StatusBar,
   Text,
   FlatList,
   TouchableOpacity,
@@ -11,7 +10,9 @@ import {
 import { connect } from "react-redux";
 
 function DeckList(props) {
+
   const { decks, navigation } = props;
+
   const renderItem = ({ item }) => (
     <Item title={item.title} questions={item.questions} />
   );
@@ -22,11 +23,6 @@ function DeckList(props) {
       <Text style={styles.questions}>{questions.length} cards</Text>
     </TouchableOpacity>
   );
-
-  const onPressItem = (title) => {
-    const { navigate } = props.navigation;
-    navigate('DeckDetails', { deck: title });
-  };
 
   return (
     <View style={styles.container}>

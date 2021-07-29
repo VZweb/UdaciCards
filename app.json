@@ -1,16 +1,25 @@
 {
   "expo": {
-    "sdkVersion": "41.0.0",
-    "orientation": "portrait",
+    "sdkVersion": "40.0.0",
     "name": "UdaciCards",
-    "description": "Flash cards",
-    "slug": "udaccards",
-    "version": "1.0",
+    "slug": "UdaciCards",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "https://tylermcginnis.com/udacifitness-512.png",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "bundleIdentifier": "org.udacifitness.exp"
+      "supportsTablet": true
     },
     "android": {
-      "package": "org.udacifitness.exp"
+      "package": "com.example.myapp",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      }
     }
   }
 }

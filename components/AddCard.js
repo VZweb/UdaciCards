@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { addCardToDeck } from "../actions/cards";
+import { Alert } from "react-native";
 
 function AddCard(props) {
   const [cardQuestion, setCardQuestion] = useState("");
@@ -16,8 +17,12 @@ function AddCard(props) {
   const { dispatch, navigation } = props;
 
   function onPress(question, answer, deckTitle) {
-    dispatch(addCardToDeck({ question, answer, deckTitle }));
-    navigation.navigate('DeckDetails', {title: deckTitle})
+    if (question === "" ||answer === "" ||!question.trim() ||!answer.trim()) {
+      Alert.alert("Warning", "All fields need to be completed!");
+    } else {
+      dispatch(addCardToDeck({ question, answer, deckTitle }));
+      navigation.navigate("DeckDetails", { title: deckTitle });
+    }
   }
 
   return (
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     marginTop: 10,
-    width: '80%',
+    width: "80%",
     height: 50,
     fontSize: 18,
     borderColor: "#697b83",
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     backgroundColor: "#697b83",
     color: "white",
-  }
+  },
 });
 
 function mapStateToProps({ decks }, { route }) {
